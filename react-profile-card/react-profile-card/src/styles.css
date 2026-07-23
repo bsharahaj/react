@@ -1,0 +1,155 @@
+/* R6 — Layout and styling.
+   External stylesheet rather than inline styles, so the JSX stays readable
+   and the design lives in one place. */
+
+:root {
+  --canvas: #e9ecf2;
+  --paper: #ffffff;
+  --ink: #131a2a;
+  --muted: #626d84;
+  --accent: #3b4fd8;
+  --rule: #dde2ec;
+
+  --radius: 10px;
+  --gap: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+/* --- Header --- */
+
+.page__header {
+  margin-bottom: 2.5rem;
+  /* The accent appears exactly twice on this page: here and on the avatar
+     ring. Restraint is what keeps it reading as an accent. */
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.page__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.page__title {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* --- Grid (R6) ---
+   auto-fill + minmax means the browser decides the column count based on
+   available width. No media queries needed: it reflows to one column on a
+   phone and three or four on a desktop by itself. */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: var(--gap);
+}
+
+/* --- Card --- */
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+
+  /* Stretch goal 1 — transition declared on the resting state, not on
+     :hover, so the card animates smoothly both in and out. */
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(19, 26, 42, 0.13);
+}
+
+/* --- Avatar (R6: rounded) --- */
+
+.card__avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  /* object-fit stops non-square source images from stretching */
+  object-fit: cover;
+  border: 2px solid var(--rule);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.card:hover .card__avatar {
+  transform: scale(1.06);
+  border-color: var(--accent);
+}
+
+/* --- Card text --- */
+
+.card__name {
+  margin: 1rem 0 0.2rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.card__title {
+  margin: 0 0 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card__bio {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* Stretch goal 2 — the fallback is visually quieter than a real bio, so a
+   missing bio reads as absent rather than as a short one. */
+.card__bio--empty {
+  font-style: italic;
+  opacity: 0.6;
+}
+
+/* Quality floor: people who have asked their OS to reduce motion get the
+   colour and shadow changes without the movement. */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card__avatar {
+    transition: none;
+  }
+  .card:hover {
+    transform: none;
+  }
+  .card:hover .card__avatar {
+    transform: none;
+  }
+}
