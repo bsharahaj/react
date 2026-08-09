@@ -1,0 +1,313 @@
+/* styles.css — global styles for the habit dashboard.
+   Every interactive element has a hover state and a visible keyboard focus ring (R7),
+   and the toggle button reads clearly differently when the habit is done. */
+
+:root {
+  --ink: #14162e;
+  --ink-soft: #5a5f80;
+  --paper: #eef1f8;
+  --surface: #ffffff;
+  --line: #d9dded;
+  --indigo: #4b47e8;
+  --jade: #12806a;
+  --amber: #b8650c;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+/* ---------- Header ---------- */
+
+.app__eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--indigo);
+}
+
+.app__title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.app__subtitle {
+  margin: 6px 0 28px;
+  color: var(--ink-soft);
+}
+
+/* ---------- Form ---------- */
+
+.habit-form {
+  margin-bottom: 20px;
+}
+
+.habit-form__label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.habit-form__row {
+  display: flex;
+  gap: 8px;
+}
+
+.habit-form__input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+
+.habit-form__input::placeholder {
+  color: #9aa0bd;
+}
+
+.habit-form__input:hover {
+  border-color: #b9c0d8;
+}
+
+.habit-form__input:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 1px;
+  border-color: var(--indigo);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 11px 16px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease,
+    color 120ms ease, transform 120ms ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.btn--add {
+  background: var(--indigo);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.btn--add:hover:not(:disabled) {
+  background: #3a36cf;
+}
+
+/* Toggle: the two states are deliberately different in fill, colour and border,
+   not just in label — so "done" is readable at a glance. */
+.btn--toggle {
+  min-width: 118px;
+}
+
+.btn--toggle.is-todo {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.btn--toggle.is-todo:hover {
+  border-color: var(--jade);
+  color: var(--jade);
+}
+
+.btn--toggle.is-done {
+  background: var(--jade);
+  border-color: var(--jade);
+  color: #fff;
+}
+
+.btn--toggle.is-done:hover {
+  background: #0d6553;
+}
+
+.btn--remove {
+  background: transparent;
+  border-color: transparent;
+  color: var(--ink-soft);
+  padding-inline: 10px;
+}
+
+.btn--remove:hover {
+  color: #b3261e;
+  background: #fdecea;
+}
+
+/* ---------- Summary banner ---------- */
+
+.banner {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.banner--complete {
+  border-color: var(--jade);
+}
+
+.banner__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.banner__count {
+  margin: 0;
+  font-weight: 600;
+}
+
+.banner__percent {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.banner__track {
+  height: 8px;
+  background: var(--paper);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.banner__fill {
+  height: 100%;
+  background: var(--indigo);
+  border-radius: 99px;
+  transition: width 220ms ease;
+}
+
+.banner--complete .banner__fill {
+  background: var(--jade);
+}
+
+/* ---------- Habit list ---------- */
+
+.habit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 14px 14px 16px;
+}
+
+.card--done {
+  border-left-color: var(--jade);
+  background: #f4faf8;
+}
+
+.card__text {
+  min-width: 0;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.card__streak {
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.card__streak-number {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--amber);
+  margin-right: 4px;
+}
+
+.card__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.empty {
+  margin: 0;
+  padding: 28px 16px;
+  text-align: center;
+  color: var(--ink-soft);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 520px) {
+  .habit-form__row {
+    flex-direction: column;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card__actions {
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
