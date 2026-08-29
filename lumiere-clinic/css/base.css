@@ -1,0 +1,110 @@
+/* ==========================================================
+   Lumière Aesthetic Clinic — base.css
+   Design tokens, reset, typography and shared UI (buttons, chips, cards, imagery)
+   ========================================================== */
+
+/* ============ TOKENS ============ */
+:root{
+  --bg:#FBF9F5;
+  --panel:#F3EEE5;
+  --panel-2:#EEE7DB;
+  --card:#FFFFFF;
+  --line:#E7E0D4;
+  --line-soft:#EFEAE0;
+  --ink:#24211C;
+  --ink-2:#4A453D;
+  --muted:#8D8577;
+  --sage:#6E7A62;
+  --sage-deep:#48523E;
+  --sage-tint:#EDF0E8;
+  --gold:#B29A6B;
+  --gold-deep:#8F7847;
+  --danger:#A05A4A;
+  --shadow-sm:0 1px 2px rgba(36,33,28,.04),0 2px 8px rgba(36,33,28,.04);
+  --shadow-md:0 2px 6px rgba(36,33,28,.05),0 12px 32px rgba(36,33,28,.08);
+  --shadow-lg:0 4px 10px rgba(36,33,28,.06),0 24px 60px rgba(36,33,28,.12);
+  --r-sm:10px; --r-md:16px; --r-lg:22px;
+  --arch:180px 180px 18px 18px;
+  --font-display:"Fraunces",Georgia,serif;
+  --font-body:"Outfit",-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--ink);
+  font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--sage);outline-offset:3px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+/* ============ TYPE ============ */
+.eyebrow{
+  font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--sage-deep);
+}
+.eyebrow--muted{color:var(--muted)}
+h1,h2,h3,.display{font-family:var(--font-display);font-weight:400;line-height:1.12;letter-spacing:-.01em}
+.serif-i{font-family:var(--font-display);font-style:italic;font-weight:300}
+
+/* ============ SHARED UI ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 28px;border-radius:999px;font-size:14px;font-weight:500;
+  letter-spacing:.04em;transition:all .25s var(--ease);white-space:nowrap;
+}
+.btn--primary{background:var(--ink);color:#FDFCF9}
+.btn--primary:hover{background:var(--sage-deep);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn--sage{background:var(--sage-deep);color:#FDFCF9}
+.btn--sage:hover{background:var(--ink);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--line);}
+.btn--ghost:hover{border-color:var(--ink);background:var(--card)}
+.btn--sm{padding:10px 20px;font-size:13px}
+.btn[disabled]{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.btn .arr{transition:transform .25s var(--ease);font-size:15px}
+.btn:hover .arr{transform:translateX(3px)}
+
+.chip{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;
+  font-size:11.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+}
+.chip--sage{background:var(--sage-tint);color:var(--sage-deep)}
+.chip--gold{background:#F4EDDF;color:var(--gold-deep)}
+.chip--neutral{background:var(--panel);color:var(--ink-2)}
+.chip--confirmed{background:var(--sage-tint);color:var(--sage-deep)}
+.chip--pending{background:#F4EDDF;color:var(--gold-deep)}
+.chip--progress{background:#EAEDF2;color:#4E5A70}
+.chip--completed{background:var(--panel);color:var(--muted)}
+.dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+
+/* ============ SCREENS ============ */
+.screen{display:none;animation:fadeUp .45s var(--ease)}
+.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ============ IMAGERY (gradient art w/ grain) ============ */
+.art{position:relative;overflow:hidden;background:var(--panel-2)}
+.art::after{
+  content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+}
+.art::before{content:"";position:absolute;inset:0;background:inherit}
+.art-1{background:radial-gradient(120% 90% at 20% 15%,#F1E4D4 0%,#E4CFB8 42%,#C9A98B 100%)}
+.art-2{background:radial-gradient(110% 100% at 75% 20%,#EFEDE4 0%,#D6D8C8 45%,#9FA88F 100%)}
+.art-3{background:radial-gradient(120% 110% at 30% 80%,#F3EBE2 0%,#DECDBE 50%,#AE8F79 100%)}
+.art-4{background:radial-gradient(130% 100% at 70% 75%,#EEEBE3 0%,#D3CCBC 48%,#8F8871 100%)}
+.art-5{background:radial-gradient(120% 100% at 25% 25%,#F5EDE6 0%,#E2CFC6 46%,#B69086 100%)}
+.art-6{background:radial-gradient(110% 110% at 70% 30%,#EFEEE8 0%,#CFD4CC 50%,#7E8B7C 100%)}
+.art-7{background:radial-gradient(130% 100% at 30% 20%,#F2E9DB 0%,#E0CBA7 50%,#B49A6C 100%)}
+.art-8{background:radial-gradient(120% 110% at 65% 70%,#F1ECE6 0%,#DBD0C9 48%,#A29288 100%)}
+.art .ring{position:absolute;border:1px solid rgba(255,255,255,.55);border-radius:50%;pointer-events:none}
+.art .orb{position:absolute;border-radius:50%;filter:blur(2px);background:rgba(255,255,255,.35);pointer-events:none}

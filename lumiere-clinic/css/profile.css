@@ -1,0 +1,67 @@
+/* ==========================================================
+   Lumière Aesthetic Clinic — profile.css
+   Client profile — loyalty card, upcoming appointment, treatment history
+   ========================================================== */
+
+/* ============ PROFILE ============ */
+.profile-head{display:flex;align-items:center;gap:22px;padding:56px 0 34px}
+.profile-head .avatar{width:84px;height:84px;font-size:30px}
+.profile-head h1{font-size:clamp(28px,3vw,40px)}
+.profile-head .ph-meta{color:var(--muted);font-size:14px;margin-top:4px;font-weight:300}
+.profile-head .chip{margin-top:10px}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;box-shadow:var(--shadow-sm)}
+.pcard h3{font-size:20px;margin-bottom:18px}
+.pcard .pcard-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+.pcard .pcard-head h3{margin-bottom:0}
+
+/* loyalty card */
+.loyalty-card{
+  grid-column:1/-1;position:relative;overflow:hidden;border-radius:var(--r-lg);
+  background:linear-gradient(120deg,#2E2B24 0%,#4A4436 55%,#6B5E43 100%);
+  color:#F3EFE4;padding:36px 40px;box-shadow:var(--shadow-lg);
+}
+.loyalty-card::before{content:"";position:absolute;right:-70px;top:-110px;width:380px;height:380px;border:1px solid rgba(243,239,228,.15);border-radius:50%}
+.loyalty-card::after{content:"";position:absolute;right:60px;top:-160px;width:380px;height:380px;border:1px solid rgba(243,239,228,.09);border-radius:50%}
+.loyalty-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:34px;position:relative;z-index:1}
+.loyalty-top .lc-brand{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#CDC3A8}
+.loyalty-top .lc-tier{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid rgba(243,239,228,.3);border-radius:999px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.loyalty-points{position:relative;z-index:1}
+.loyalty-points .lp-num{font-family:var(--font-display);font-size:clamp(40px,4.6vw,58px);font-weight:300;line-height:1}
+.loyalty-points .lp-num small{font-size:.45em;color:#B9AE93}
+.loyalty-points .lp-away{margin-top:8px;font-size:14px;color:#CDC3A8;font-weight:300}
+.progress-track{position:relative;z-index:1;margin-top:26px;height:8px;border-radius:99px;background:rgba(243,239,228,.16);overflow:hidden}
+.progress-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#C8B486,#E8DAB6);transition:width 1.1s var(--ease) .2s;box-shadow:0 0 14px rgba(232,218,182,.5)}
+.progress-labels{position:relative;z-index:1;display:flex;justify-content:space-between;margin-top:12px;font-size:12px;color:#B9AE93;letter-spacing:.06em}
+.loyalty-reward{position:relative;z-index:1;margin-top:24px;display:flex;gap:12px;align-items:center;padding:14px 18px;background:rgba(243,239,228,.08);border:1px solid rgba(243,239,228,.14);border-radius:14px;font-size:13.5px}
+.loyalty-reward b{color:#E8DAB6;font-weight:500}
+
+/* upcoming appt */
+.upcoming{display:flex;gap:18px;align-items:stretch}
+.upcoming .up-date{
+  flex-shrink:0;width:86px;border-radius:var(--r-md);background:var(--sage-deep);color:#F2F0E8;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;
+}
+.upcoming .up-date .ud-mon{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#C9CFBB}
+.upcoming .up-date .ud-day{font-family:var(--font-display);font-size:34px;line-height:1.1}
+.upcoming .up-date .ud-dow{font-size:11px;color:#C9CFBB;letter-spacing:.1em;text-transform:uppercase}
+.upcoming .up-body h4{font-family:var(--font-display);font-size:19px;font-weight:400;margin-bottom:4px}
+.upcoming .up-body .up-meta{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.upcoming .up-body{display:flex;flex-direction:column;justify-content:center;gap:2px}
+.up-actions{margin-top:16px;display:flex;gap:10px}
+
+/* history */
+.history-list{display:flex;flex-direction:column}
+.h-row{display:flex;gap:16px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line-soft)}
+.h-row:last-child{border-bottom:none}
+.h-row .h-img{width:46px;height:46px;border-radius:999px 999px 8px 8px;flex-shrink:0}
+.h-row .h-name{font-size:14.5px;font-weight:500}
+.h-row .h-sub{font-size:12.5px;color:var(--muted);margin-top:1px}
+.h-row .h-right{margin-left:auto;text-align:right;flex-shrink:0}
+.h-row .h-pts{font-size:12.5px;color:var(--gold-deep);font-weight:500}
+.h-row .h-price{font-size:13.5px;font-weight:500;margin-top:1px}
+.profile-info-rows{display:flex;flex-direction:column}
+.pi-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
+.pi-row:last-child{border-bottom:none}
+.pi-row .pik{color:var(--muted)}
+.pi-row .piv{font-weight:500;text-align:right}

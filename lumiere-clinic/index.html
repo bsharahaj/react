@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumière — Aesthetic Clinic</title>
+
+<!-- Typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/entry.css">
+<link rel="stylesheet" href="css/client.css">
+<link rel="stylesheet" href="css/booking.css">
+<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ================= ENTRY / LOGIN ================= -->
+<div class="screen active" id="screen-entry">
+  <div class="entry-visual">
+    <div class="entry-brand">Lumière · Aesthetic Clinic</div>
+    <div class="arch-frame"></div>
+    <div class="entry-word">lumière</div>
+    <div class="entry-caption">The art of considered skin</div>
+  </div>
+  <div class="entry-panel">
+    <div class="entry-box">
+      <div class="eyebrow">Welcome back</div>
+      <h1>Sign in to continue</h1>
+      <p class="sub">Choose how you'd like to enter the clinic today.</p>
+      <div class="role-cards" role="radiogroup" aria-label="Choose your role">
+        <button class="role-card" id="role-client" onclick="selectRole('client')">
+          <span class="role-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.6-5.6 7-5.6s6.2 1.8 7 5.6"/></svg>
+          </span>
+          <span>
+            <span class="role-name">Client</span>
+            <span class="role-desc">Book and manage your treatments</span>
+          </span>
+          <span class="role-check">✓</span>
+        </button>
+        <button class="role-card" id="role-admin" onclick="selectRole('admin')">
+          <span class="role-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M8.5 13.5h7M8.5 16.5h4"/></svg>
+          </span>
+          <span>
+            <span class="role-name">Admin</span>
+            <span class="role-desc">Manage your clinic</span>
+          </span>
+          <span class="role-check">✓</span>
+        </button>
+      </div>
+      <button class="btn btn--primary entry-continue" id="entry-continue" disabled onclick="login()">Continue <span class="arr">→</span></button>
+      <p class="entry-note">Prototype demo — authentication is simulated for presentation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CLIENT SHELL ================= -->
+<div class="screen" id="client-shell">
+  <header class="client-topbar">
+    <div class="client-topbar-inner">
+      <a class="brand" href="#" onclick="go('home');return false;">
+        <span class="brand-mark">ℓ</span>
+        <span><span class="brand-name">Lumière</span><span class="brand-sub">Aesthetic Clinic</span></span>
+      </a>
+      <nav class="client-nav" aria-label="Main">
+        <button class="navlink active" data-nav="home" onclick="go('home')">Home</button>
+        <button class="navlink" data-nav="treatments" onclick="go('treatments')">Treatments</button>
+        <button class="navlink" data-nav="book" onclick="go('book')">Book Appointment</button>
+        <button class="navlink" data-nav="profile" onclick="go('profile')">My Profile</button>
+      </nav>
+      <button class="btn btn--sage btn--sm topbar-cta" onclick="go('book')">Book now</button>
+      <a class="logout-link" href="#" onclick="logout();return false;">Sign out</a>
+    </div>
+  </header>
+
+  <!-- ===== HOME ===== -->
+  <section class="screen client-screen active" id="cs-home">
+    <div class="page">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Boutique aesthetic medicine · Since 2014</div>
+          <h1>Skin, treated as <span class="serif-i">an art form</span></h1>
+          <p class="lead">Lumière pairs medical-grade aesthetics with an unhurried, considered approach. Every treatment begins with your skin — and ends with light.</p>
+          <div class="hero-actions">
+            <button class="btn btn--primary" onclick="go('book')">Book an appointment <span class="arr">→</span></button>
+            <button class="btn btn--ghost" onclick="go('treatments')">Explore treatments</button>
+          </div>
+          <div class="hero-meta">
+            <div class="hm"><b>12+</b><span>Years of care</span></div>
+            <div class="hm"><b>4.9</b><span>Client rating</span></div>
+            <div class="hm"><b>6,400</b><span>Treatments done</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-arch art art-1"><span class="ring"></span><span class="orb"></span></div>
+          <div class="hero-badge">
+            <span class="hb-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 6.5 9.5 17 4 11.6"/></svg></span>
+            <span><b>Licensed dermatology team</b><span>Board-certified specialists</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow eyebrow--muted">Curated for you</div>
+            <h2>Featured treatments</h2>
+          </div>
+          <a class="see-all" href="#" onclick="go('treatments');return false;">View all treatments <span class="arr">→</span></a>
+        </div>
+        <div class="featured-grid" id="featured-grid"></div>
+      </div>
+
+      <div class="ritual">
+        <div class="eyebrow">The Lumière ritual</div>
+        <h2>One visit. A quieter kind of confidence.</h2>
+        <p>Consultation, treatment and aftercare — designed as a single calm sequence, guided by a specialist who knows your skin's history.</p>
+        <button class="btn btn--primary" onclick="go('book')">Begin your booking <span class="arr">→</span></button>
+      </div>
+
+      <div class="loyal-teaser">
+        <span class="lt-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.47 5 5.53.8-4 3.9.94 5.5L12 16.1l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/></svg></span>
+        <div>
+          <b>Welcome back, Maya — 720 loyalty points</b>
+          <span>You're 280 points away from a complimentary Signature Glow Facial.</span>
+        </div>
+        <button class="btn btn--ghost btn--sm" onclick="go('profile')">View rewards</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TREATMENTS ===== -->
+  <section class="screen client-screen" id="cs-treatments">
+    <div class="page">
+      <div class="page-head">
+        <div class="eyebrow">Our menu of care</div>
+        <h1>Treatments &amp; services</h1>
+        <p>Every protocol is performed by a licensed specialist and tailored in a short consultation before we begin.</p>
+      </div>
+      <div class="filter-row" id="filter-row" role="tablist" aria-label="Filter by category"></div>
+      <div class="treatments-grid" id="treatments-grid"></div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING ===== -->
+  <section class="screen client-screen" id="cs-book">
+    <div class="page">
+      <div class="book-wrap">
+        <div class="page-head" style="padding-bottom:0">
+          <div class="eyebrow">Reserve your visit</div>
+          <h1>Book an appointment</h1>
+        </div>
+
+        <div class="stepper" id="stepper" aria-label="Booking progress">
+          <div class="step" data-step="1"><span class="s-dot">1</span><span class="s-label">Treatment</span></div>
+          <div class="step-line"></div>
+          <div class="step" data-step="2"><span class="s-dot">2</span><span class="s-label">Specialist</span></div>
+          <div class="step-line"></div>
+          <div class="step" data-step="3"><span class="s-dot">3</span><span class="s-label">Date</span></div>
+          <div class="step-line"></div>
+          <div class="step" data-step="4"><span class="s-dot">4</span><span class="s-label">Time</span></div>
+          <div class="step-line"></div>
+          <div class="step" data-step="5"><span class="s-dot">5</span><span class="s-label">Confirm</span></div>
+        </div>
+
+        <div class="book-panel">
+          <div class="book-step" id="bstep-1">
+            <h2>Choose your treatment</h2>
+            <p class="panel-sub">Select the protocol you'd like to reserve.</p>
+            <div class="pick-list" id="book-treatment-list"></div>
+          </div>
+          <div class="book-step" id="bstep-2">
+            <h2>Choose your specialist</h2>
+            <p class="panel-sub">All of our practitioners are licensed and board-certified.</p>
+            <div class="spec-grid" id="book-specialist-list"></div>
+          </div>
+          <div class="book-step" id="bstep-3">
+            <h2>Choose a date</h2>
+            <p class="panel-sub">Days marked in white are open for booking.</p>
+            <div class="cal">
+              <div class="cal-head">
+                <button class="cal-nav" onclick="calShift(-1)" aria-label="Previous month">←</button>
+                <div class="cal-month" id="cal-month"></div>
+                <button class="cal-nav" onclick="calShift(1)" aria-label="Next month">→</button>
+              </div>
+              <div class="cal-grid" id="cal-grid"></div>
+              <div class="cal-legend">
+                <span><i style="background:var(--sage-deep)"></i>Selected</span>
+                <span><i style="background:var(--gold)"></i>Today</span>
+                <span><i style="background:#C9C2B4"></i>Unavailable</span>
+              </div>
+            </div>
+          </div>
+          <div class="book-step" id="bstep-4">
+            <h2>Choose a time</h2>
+            <p class="slot-date-label" id="slot-date-label"></p>
+            <div class="slot-grid" id="slot-grid"></div>
+          </div>
+          <div class="book-step" id="bstep-5">
+            <h2>Review &amp; confirm</h2>
+            <p class="panel-sub">Please make sure everything looks right before confirming.</p>
+            <div class="review-card" id="review-card"></div>
+            <div class="review-note">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5M12 16h.01"/></svg>
+              <span>Free rescheduling up to 24 hours before your appointment. A short consultation is included in every visit.</span>
+            </div>
+          </div>
+          <div class="book-footer">
+            <button class="btn btn--ghost" id="book-back" onclick="bookBack()">← Back</button>
+            <button class="btn btn--primary" id="book-next" onclick="bookNext()" disabled>Continue <span class="arr">→</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUCCESS ===== -->
+  <section class="screen client-screen" id="cs-success">
+    <div class="page">
+      <div class="success-wrap">
+        <div class="success-seal">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5 9.5 17 4 11.6"/></svg>
+        </div>
+        <div class="eyebrow">Appointment confirmed</div>
+        <h1>We look forward to <span class="serif-i">seeing you</span></h1>
+        <p class="success-sub">A confirmation has been sent to your email with everything you need.</p>
+        <div class="success-card"><div class="review-rows" id="success-rows"></div></div>
+        <p class="success-ref">Booking reference · <b id="success-ref">LM-2481</b></p>
+        <div class="success-actions">
+          <button class="btn btn--primary" onclick="go('profile')">View in my profile</button>
+          <button class="btn btn--ghost" onclick="resetBooking();go('home')">Back to home</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROFILE ===== -->
+  <section class="screen client-screen" id="cs-profile">
+    <div class="page">
+      <div class="profile-head">
+        <div class="avatar av-1">MC</div>
+        <div>
+          <div class="eyebrow eyebrow--muted">My profile</div>
+          <h1>Maya Cohen</h1>
+          <div class="ph-meta">Member since March 2023 · maya.cohen@email.com</div>
+          <span class="chip chip--gold"><span class="dot"></span>Gold member</span>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+        <div class="loyalty-card">
+          <div class="loyalty-top">
+            <div>
+              <div class="lc-brand">Lumière Rewards</div>
+            </div>
+            <span class="lc-tier">✦ Gold tier</span>
+          </div>
+          <div class="loyalty-points">
+            <div class="lp-num">720 <small>/ 1000 points</small></div>
+            <div class="lp-away">280 points until your next reward</div>
+          </div>
+          <div class="progress-track"><div class="progress-fill" id="loyalty-fill"></div></div>
+          <div class="progress-labels"><span>0</span><span>250</span><span>500</span><span>750</span><span>1000</span></div>
+          <div class="loyalty-reward">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:#E8DAB6"><rect x="3.5" y="8" width="17" height="12" rx="2"/><path d="M3.5 12h17M12 8v12M12 8c-2.8 0-4.5-1-4.5-2.5S9.2 3 10.5 3c1.6 0 1.5 2.6 1.5 5zm0 0c2.8 0 4.5-1 4.5-2.5S14.8 3 13.5 3C11.9 3 12 5.6 12 8z"/></svg>
+            <span>Next reward at 1,000 pts — <b>Complimentary Signature Glow Facial</b> (worth ₪420)</span>
+          </div>
+        </div>
+
+        <div class="pcard">
+          <div class="pcard-head"><h3>Upcoming appointment</h3><span class="chip chip--confirmed"><span class="dot"></span>Confirmed</span></div>
+          <div id="upcoming-appt"></div>
+          <div class="up-actions">
+            <button class="btn btn--ghost btn--sm" onclick="go('book')">Reschedule</button>
+            <button class="btn btn--ghost btn--sm" style="color:var(--danger)">Cancel</button>
+          </div>
+        </div>
+
+        <div class="pcard">
+          <h3>Personal details</h3>
+          <div class="profile-info-rows">
+            <div class="pi-row"><span class="pik">Full name</span><span class="piv">Maya Cohen</span></div>
+            <div class="pi-row"><span class="pik">Phone</span><span class="piv">+972 52 384 1170</span></div>
+            <div class="pi-row"><span class="pik">Email</span><span class="piv">maya.cohen@email.com</span></div>
+            <div class="pi-row"><span class="pik">Skin profile</span><span class="piv">Combination · Sensitive</span></div>
+            <div class="pi-row"><span class="pik">Preferred specialist</span><span class="piv">Dr. Noa Berman</span></div>
+          </div>
+        </div>
+
+        <div class="pcard" style="grid-column:1/-1">
+          <div class="pcard-head"><h3>Previous treatments</h3><span style="font-size:12.5px;color:var(--muted)">Points earned with every visit</span></div>
+          <div class="history-list" id="history-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="client-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="brand">
+          <span class="brand-mark">ℓ</span>
+          <span><span class="brand-name">Lumière</span><span class="brand-sub">Aesthetic Clinic</span></span>
+        </div>
+        <p class="f-tag">The art of considered skin.</p>
+      </div>
+      <div class="footer-cols">
+        <div><b>Visit</b><span>14 Rothschild Blvd</span><span>Tel Aviv</span></div>
+        <div><b>Hours</b><span>Sun–Thu · 9:00–19:00</span><span>Fri · 9:00–14:00</span></div>
+        <div><b>Contact</b><span>+972 3 555 0198</span><span>hello@lumiere.clinic</span></div>
+      </div>
+    </div>
+    <div class="footer-legal">© 2026 Lumière Aesthetic Clinic · University frontend prototype — all data is simulated</div>
+  </footer>
+
+  <nav class="mobile-nav" aria-label="Mobile">
+    <div class="mobile-nav-inner">
+      <button class="mnav active" data-nav="home" onclick="go('home')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>
+        Home<span class="mnav-dot"></span>
+      </button>
+      <button class="mnav" data-nav="treatments" onclick="go('treatments')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3c3 3.4 4.8 6.4 4.8 9a4.8 4.8 0 1 1-9.6 0c0-2.6 1.8-5.6 4.8-9z"/><path d="M12 21v-4"/></svg>
+        Treatments<span class="mnav-dot"></span>
+      </button>
+      <button class="mnav" data-nav="book" onclick="go('book')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><path d="M8 3.5v4M16 3.5v4M4 10.5h16"/></svg>
+        Book<span class="mnav-dot"></span>
+      </button>
+      <button class="mnav" data-nav="profile" onclick="go('profile')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.6-5.6 7-5.6s6.2 1.8 7 5.6"/></svg>
+        Profile<span class="mnav-dot"></span>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- ================= ADMIN SHELL ================= -->
+<div class="screen" id="admin-shell">
+  <aside class="admin-side">
+    <a class="brand" href="#" onclick="goAdmin('dashboard');return false;">
+      <span class="brand-mark">ℓ</span>
+      <span><span class="brand-name">Lumière</span><span class="brand-sub">Clinic Admin</span></span>
+    </a>
+    <nav class="admin-nav" aria-label="Admin">
+      <button class="anav active" data-anav="dashboard" onclick="goAdmin('dashboard')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.8"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="1.8"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="1.8"/><rect x="13" y="13" width="7.5" height="7.5" rx="1.8"/></svg>
+        Dashboard</button>
+      <button class="anav" data-anav="appointments" onclick="goAdmin('appointments')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><path d="M8 3.5v4M16 3.5v4M4 10.5h16"/></svg>
+        Appointments</button>
+      <button class="anav" data-anav="clients" onclick="goAdmin('clients')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.7-3.3 3-4.9 5.5-4.9s4.8 1.6 5.5 4.9M15.5 5.7a3.2 3.2 0 0 1 0 5.6M17.5 14.9c1.7.7 2.7 2.2 3 4.6"/></svg>
+        Clients</button>
+      <button class="anav" data-anav="treatments" onclick="goAdmin('treatments')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3c3 3.4 4.8 6.4 4.8 9a4.8 4.8 0 1 1-9.6 0c0-2.6 1.8-5.6 4.8-9z"/><path d="M12 21v-4"/></svg>
+        Treatments</button>
+    </nav>
+    <div class="side-foot">
+      <div class="side-user">
+        <span class="avatar av-2">DL</span>
+        <span><b>Dr. Dana Levi</b><span>Clinic director</span></span>
+      </div>
+      <a class="side-logout" href="#" onclick="logout();return false;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M14 4h4.5a1.5 1.5 0 0 1 1.5 1.5v13a1.5 1.5 0 0 1-1.5 1.5H14M10 16.5 5.5 12 10 7.5M5.5 12H16"/></svg>
+        Sign out</a>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <!-- DASHBOARD -->
+    <div class="admin-screen active" id="as-dashboard">
+      <div class="admin-topline">
+        <div>
+          <h1>Good morning, Dr. Levi</h1>
+          <div class="at-date">Sunday, 9 August 2026 · Rothschild branch</div>
+        </div>
+        <div class="a-search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m19.5 19.5-4-4"/></svg>
+          <input placeholder="Search clients, appointments…" aria-label="Search">
+        </div>
+      </div>
+
+      <div class="stat-grid" id="stat-grid"></div>
+
+      <div class="admin-cols">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div class="acard">
+            <div class="acard-head"><h3>Appointments this week</h3><span>3–9 Aug</span></div>
+            <div class="chart" id="week-chart"></div>
+          </div>
+          <div class="acard">
+            <div class="acard-head"><h3>Today's appointments</h3><span id="today-count"></span></div>
+            <div style="overflow-x:auto">
+              <table class="a-table" id="today-table">
+                <thead><tr><th>Client</th><th>Treatment</th><th class="hide-m">Specialist</th><th>Time</th><th>Status</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div class="acard">
+            <div class="acard-head"><h3>Most popular treatments</h3><span>This month</span></div>
+            <div class="popular-list" id="popular-list"></div>
+            <div class="mini-note">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>Laser Hair Removal bookings are up 18% vs. last month — consider opening extra Thursday slots.</span>
+            </div>
+          </div>
+          <div class="acard">
+            <div class="acard-head"><h3>Occupancy today</h3><span>4 rooms</span></div>
+            <div class="popular-list" id="occupancy-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- APPOINTMENTS -->
+    <div class="admin-screen" id="as-appointments">
+      <div class="admin-topline">
+        <div><h1>Appointments</h1><div class="at-date">Full schedule · this week</div></div>
+        <button class="btn btn--sage btn--sm">+ New appointment</button>
+      </div>
+      <div class="acard">
+        <div style="overflow-x:auto">
+          <table class="a-table" id="all-appts-table">
+            <thead><tr><th>Client</th><th>Treatment</th><th class="hide-m">Specialist</th><th class="hide-m">Date</th><th>Time</th><th>Status</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLIENTS -->
+    <div class="admin-screen" id="as-clients">
+      <div class="admin-topline">
+        <div><h1>Clients</h1><div class="at-date">248 registered clients</div></div>
+        <button class="btn btn--sage btn--sm">+ Add client</button>
+      </div>
+      <div class="acard">
+        <div style="overflow-x:auto">
+          <table class="a-table" id="clients-table">
+            <thead><tr><th>Client</th><th class="hide-m">Phone</th><th>Visits</th><th class="hide-m">Loyalty points</th><th>Last visit</th><th>Tier</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TREATMENTS (ADMIN) -->
+    <div class="admin-screen" id="as-treatments">
+      <div class="admin-topline">
+        <div><h1>Treatments</h1><div class="at-date">12 active services across 4 categories</div></div>
+        <button class="btn btn--sage btn--sm">+ Add treatment</button>
+      </div>
+      <div class="treat-admin-grid" id="admin-treatments-grid"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Scripts (order matters: data first, then feature modules) -->
+<script src="js/data.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/treatments.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

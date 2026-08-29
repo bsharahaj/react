@@ -1,0 +1,155 @@
+/* ==========================================================
+   Lumière Aesthetic Clinic — client.css
+   Client interface — top navigation, home page, treatments page, footer, mobile nav
+   ========================================================== */
+
+/* ============ CLIENT NAV ============ */
+.client-topbar{
+  position:sticky;top:0;z-index:60;background:rgba(251,249,245,.85);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line-soft);
+}
+.client-topbar-inner{
+  max-width:1200px;margin:0 auto;padding:0 32px;height:74px;
+  display:flex;align-items:center;gap:40px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{
+  width:36px;height:36px;border-radius:999px 999px 6px 6px;
+  background:linear-gradient(150deg,var(--sage) 0%,var(--sage-deep) 100%);
+  display:flex;align-items:center;justify-content:center;
+  color:#F7F5EE;font-family:var(--font-display);font-style:italic;font-size:18px;
+}
+.brand-name{font-size:14px;letter-spacing:.3em;text-transform:uppercase;font-weight:500}
+.brand-sub{display:block;font-size:9.5px;letter-spacing:.24em;color:var(--muted);margin-top:1px}
+.client-nav{display:flex;gap:6px;margin-left:auto}
+.client-nav .navlink{
+  padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--ink-2);
+  transition:all .2s var(--ease);letter-spacing:.02em;
+}
+.client-nav .navlink:hover{background:var(--panel)}
+.client-nav .navlink.active{background:var(--ink);color:#FDFCF9}
+.topbar-cta{margin-left:8px}
+.logout-link{font-size:12.5px;color:var(--muted);margin-left:14px;letter-spacing:.05em}
+.logout-link:hover{color:var(--ink)}
+
+/* mobile bottom nav */
+.mobile-nav{
+  display:none;position:fixed;bottom:14px;left:14px;right:14px;z-index:70;
+  background:rgba(36,33,28,.94);backdrop-filter:blur(12px);border-radius:999px;
+  padding:8px;box-shadow:var(--shadow-lg);
+}
+.mobile-nav-inner{display:flex;justify-content:space-around}
+.mobile-nav .mnav{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:8px 4px;border-radius:999px;color:rgba(250,248,242,.6);font-size:10px;letter-spacing:.04em;
+}
+.mobile-nav .mnav svg{width:19px;height:19px}
+.mobile-nav .mnav.active{color:#FDFCF9}
+.mobile-nav .mnav.active .mnav-dot{opacity:1}
+.mnav-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity .2s}
+
+.page{max-width:1200px;margin:0 auto;padding:0 32px 90px}
+
+/* ============ HOME ============ */
+.hero{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;
+  padding:70px 0 30px;
+}
+.hero h1{font-size:clamp(38px,4.6vw,62px);margin:18px 0 20px}
+.hero h1 .serif-i{color:var(--sage-deep)}
+.hero p.lead{font-size:16.5px;color:var(--ink-2);max-width:46ch;font-weight:300;margin-bottom:34px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-meta{display:flex;gap:34px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.hero-meta .hm b{font-family:var(--font-display);font-weight:500;font-size:24px;display:block}
+.hero-meta .hm span{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.hero-visual{position:relative;display:flex;justify-content:center}
+.hero-arch{
+  width:min(100%,400px);aspect-ratio:3/3.9;border-radius:999px 999px 20px 20px;
+  box-shadow:var(--shadow-lg);
+}
+.hero-arch .ring{width:78%;height:60%;left:32%;top:-12%}
+.hero-arch .orb{width:120px;height:120px;left:-8%;bottom:12%}
+.hero-badge{
+  position:absolute;bottom:34px;left:0;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--r-md);padding:14px 18px;
+  box-shadow:var(--shadow-md);display:flex;gap:12px;align-items:center;max-width:230px;
+}
+.hero-badge .hb-ic{width:38px;height:38px;border-radius:50%;background:var(--sage-tint);
+  display:flex;align-items:center;justify-content:center;color:var(--sage-deep);flex-shrink:0}
+.hero-badge b{font-size:13.5px;font-weight:600;display:block}
+.hero-badge span{font-size:12px;color:var(--muted)}
+
+.section{padding:64px 0 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:34px}
+.section-head h2{font-size:clamp(26px,3vw,36px);margin-top:10px}
+.section-head .see-all{font-size:13.5px;font-weight:500;color:var(--sage-deep);letter-spacing:.04em;display:inline-flex;gap:8px;align-items:center}
+.section-head .see-all:hover .arr{transform:translateX(3px)}
+.see-all .arr{transition:transform .25s var(--ease)}
+
+.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+
+/* treatment card */
+.t-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;transition:all .3s var(--ease);display:flex;flex-direction:column;
+}
+.t-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#DCD4C4}
+.t-card .t-img{height:190px;border-radius:var(--r-lg) var(--r-lg) 0 0}
+.t-card .t-img .ring{width:60%;height:60%;right:-18%;top:-18%}
+.t-card .t-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.t-card .t-cat{margin-bottom:10px;align-self:flex-start}
+.t-card h3{font-size:21px;margin-bottom:6px}
+.t-card .t-desc{font-size:13.5px;color:var(--muted);margin-bottom:16px;flex:1}
+.t-card .t-meta{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--ink-2);margin-bottom:16px}
+.t-card .t-meta .sep{width:3px;height:3px;border-radius:50%;background:var(--line)}
+.t-card .t-price b{font-family:var(--font-display);font-weight:500;font-size:19px}
+.t-card .t-price span{font-size:11px;color:var(--muted);display:block;letter-spacing:.06em;text-transform:uppercase}
+.t-card .t-foot{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--line-soft)}
+
+/* ritual strip */
+.ritual{
+  margin-top:70px;background:var(--sage-deep);border-radius:var(--r-lg);
+  padding:56px 56px;color:#F2F0E8;position:relative;overflow:hidden;
+}
+.ritual::before{content:"";position:absolute;right:-60px;top:-90px;width:340px;height:340px;
+  border:1px solid rgba(250,248,242,.18);border-radius:50%}
+.ritual::after{content:"";position:absolute;right:40px;top:-140px;width:340px;height:340px;
+  border:1px solid rgba(250,248,242,.12);border-radius:50%}
+.ritual .eyebrow{color:#C9CFBB}
+.ritual h2{font-size:clamp(26px,3vw,38px);margin:12px 0 10px;max-width:20ch}
+.ritual p{color:rgba(242,240,232,.75);font-weight:300;max-width:52ch;margin-bottom:28px}
+.ritual .btn--primary{background:#F7F5EE;color:var(--ink)}
+.ritual .btn--primary:hover{background:#fff}
+
+/* loyalty teaser */
+.loyal-teaser{
+  margin-top:26px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;
+  background:linear-gradient(120deg,#FCFAF5 0%,#F6EFE2 100%);
+  border:1px solid #EADFC9;border-radius:var(--r-lg);padding:26px 32px;
+}
+.loyal-teaser .lt-ic{width:52px;height:52px;border-radius:999px 999px 8px 8px;background:#F0E6D2;
+  display:flex;align-items:center;justify-content:center;color:var(--gold-deep)}
+.loyal-teaser b{font-family:var(--font-display);font-weight:500;font-size:19px;display:block}
+.loyal-teaser span{font-size:13.5px;color:var(--muted)}
+
+/* ============ TREATMENTS PAGE ============ */
+.page-head{padding:56px 0 8px}
+.page-head h1{font-size:clamp(30px,3.6vw,46px);margin:12px 0 10px}
+.page-head p{color:var(--muted);max-width:56ch;font-weight:300}
+.filter-row{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 34px}
+.filter-pill{
+  padding:10px 20px;border-radius:999px;border:1px solid var(--line);background:var(--card);
+  font-size:13.5px;font-weight:500;color:var(--ink-2);transition:all .2s var(--ease);letter-spacing:.02em;
+}
+.filter-pill:hover{border-color:var(--ink)}
+.filter-pill.active{background:var(--ink);color:#FDFCF9;border-color:var(--ink)}
+.treatments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+
+/* ============ FOOTER ============ */
+.client-footer{border-top:1px solid var(--line);margin-top:80px;background:var(--card)}
+.footer-inner{max-width:1200px;margin:0 auto;padding:44px 32px;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+.footer-inner .f-tag{font-size:13px;color:var(--muted);margin-top:8px;font-weight:300}
+.footer-cols{display:flex;gap:50px;font-size:13px;color:var(--muted)}
+.footer-cols b{display:block;color:var(--ink);font-weight:500;margin-bottom:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.footer-cols div span{display:block;margin-bottom:5px}
+.footer-legal{border-top:1px solid var(--line-soft);padding:16px 32px;text-align:center;font-size:11.5px;color:#B4AC9C;letter-spacing:.04em}

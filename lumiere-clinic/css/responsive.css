@@ -1,0 +1,59 @@
+/* ==========================================================
+   Lumière Aesthetic Clinic — responsive.css
+   Responsive rules for tablet and mobile breakpoints
+   ========================================================== */
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1080px){
+  .stat-grid{grid-template-columns:repeat(3,1fr)}
+  .featured-grid,.treatments-grid{grid-template-columns:repeat(2,1fr)}
+  .admin-cols{grid-template-columns:1fr}
+  .treat-admin-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  #screen-entry.active{grid-template-columns:1fr}
+  .entry-visual{min-height:34vh}
+  .entry-visual .arch-frame{width:220px;top:56%}
+  .entry-visual .entry-word{font-size:36px;top:56%}
+  .entry-visual .entry-caption{display:none}
+  .entry-panel{padding:44px 7% 70px}
+  .hero{grid-template-columns:1fr;gap:40px;padding-top:44px}
+  .hero-visual{order:-1}
+  .hero-arch{aspect-ratio:3/3.2;max-width:340px}
+  #admin-shell.active{grid-template-columns:1fr}
+  .admin-side{position:sticky;height:auto;flex-direction:row;align-items:center;padding:12px 16px;z-index:60;gap:8px;overflow-x:auto}
+  .admin-side .brand{margin-bottom:0;padding:0;margin-right:6px}
+  .admin-side .brand-name{display:none}
+  .admin-nav{flex-direction:row;gap:4px}
+  .admin-nav .anav{padding:9px 13px;font-size:13px;white-space:nowrap}
+  .admin-side .side-foot{display:none}
+  .admin-main{padding:26px 20px 60px}
+}
+@media (max-width:760px){
+  .client-nav,.topbar-cta,.logout-link{display:none}
+  .mobile-nav{display:block}
+  .page{padding:0 20px 130px}
+  .client-topbar-inner{padding:0 20px;height:64px}
+  .featured-grid,.treatments-grid{grid-template-columns:1fr}
+  .pick-list,.spec-grid{grid-template-columns:1fr}
+  .book-panel{padding:26px 20px}
+  .stepper{overflow-x:auto;padding-bottom:6px}
+  .step .s-label{display:none}
+  .step.current .s-label{display:block}
+  .profile-grid{grid-template-columns:1fr}
+  .loyalty-card{padding:28px 24px}
+  .ritual{padding:38px 26px}
+  .loyal-teaser{grid-template-columns:auto 1fr;padding:20px}
+  .loyal-teaser .btn{grid-column:1/-1;justify-content:center}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .hero-meta{gap:22px;flex-wrap:wrap}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .a-table .hide-m{display:none}
+  .success-actions{flex-direction:column}
+  .success-actions .btn{width:100%}
+  .book-footer{flex-direction:column-reverse;gap:12px}
+  .book-footer .btn{width:100%}
+  .upcoming{flex-direction:row}
+  .treat-admin-grid{grid-template-columns:1fr}
+  .admin-topline .a-search{display:none}
+}
